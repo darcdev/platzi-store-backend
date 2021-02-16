@@ -1,0 +1,31 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+
+node_js:
+  - "12"
+
+git:
+  depth: 3
+
+script:
+  - yarn test
+
+notifications:
+  slack: OeiMPP2SmMt3UYWGn9L4XK4E
+  email:
+    recipients:
+      - diegoandresrojas2000@gmail.com
+  on_success: always
+  on_failure: always
+
+deploy:
+  provider: heroku
+  skip-clean: true
+  keep-history: true
+  api_key: 6517b1e3-d8b9-4a46-8750-bffbb2030a0a
+  app: back-platzi-store
+  on:
+    repo: darcdev/platzi-store-backend
